@@ -389,7 +389,7 @@ const Home = () => {
                 </div>
                 <Ticker ticker={ticker} />
                 <Terminal loadNumber={loadNumber} termText={termText} />
-                <div className="mx-auto grid scale-90 grid-cols-3">
+                <div className="grid scale-90 columns-3 grid-cols-3 gap-1">
                     <Button
                         text="ESC"
                         extraClass="text-[#474747] font-bold"
