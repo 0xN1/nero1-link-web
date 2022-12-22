@@ -389,52 +389,60 @@ const Home = () => {
                 </div>
                 <Ticker ticker={ticker} />
                 <Terminal loadNumber={loadNumber} termText={termText} />
-                <div className="grid scale-90 columns-3 grid-cols-3 gap-1">
-                    <Button
-                        text="ESC"
-                        extraClass="text-[#474747] font-bold"
-                        onClick={() => {
-                            setLoadNumber(0)
-                            setTicker('ESC')
-                            setTermText('')
-                        }}
-                        variant={1}
-                    />
-                    <Button
-                        text="PROCEED"
-                        extraClass="text-[#FF4D00]"
-                        onClick={() => {}}
-                        variant={2}
-                    />
-                    <Button
-                        text="NUL"
-                        extraClass="text-[#1A1A1A] font-bold"
-                        onClick={() => {}}
-                        variant={1}
-                    />
-                    <Button text="▲" onClick={() => {}} variant={1} />
-                    <Button
-                        text="SPC"
-                        extraClass="text-[#1A1A1A] font-bold"
-                        onClick={() => {}}
-                        variant={1}
-                    />
-                    <Button text="◀" onClick={() => {}} variant={1} />
-                    <Button text="SEL" onClick={() => {}} variant={1} />
-                    <Button text="▶" onClick={() => {}} variant={1} />
-                    <Button
-                        text="SPC"
-                        extraClass="text-[#1A1A1A] font-bold"
-                        onClick={() => {}}
-                        variant={1}
-                    />
-                    <Button text="▼" onClick={() => {}} variant={1} />
-                    <Button
-                        text="BRK"
-                        extraClass="text-[#1A1A1A] font-bold"
-                        onClick={() => {}}
-                        variant={1}
-                    />
+                <div className="flex scale-90 flex-col">
+                    <div className="flex flex-row justify-between">
+                        <Button
+                            text="ESC"
+                            extraClass="text-[#474747] font-bold"
+                            onClick={() => {
+                                setLoadNumber(0)
+                                setTicker('ESC')
+                                setTermText('')
+                            }}
+                            variant={1}
+                        />
+                        <Button
+                            text="PROCEED"
+                            extraClass="text-[#FF4D00]"
+                            onClick={() => {}}
+                            variant={2}
+                        />
+                    </div>
+                    <div className="flex flex-row justify-between">
+                        <Button
+                            text="NUL"
+                            extraClass="text-[#1A1A1A] font-bold"
+                            onClick={() => {}}
+                            variant={1}
+                        />
+                        <Button text="▲" onClick={() => {}} variant={1} />
+                        <Button
+                            text="SPC"
+                            extraClass="text-[#1A1A1A] font-bold"
+                            onClick={() => {}}
+                            variant={1}
+                        />
+                    </div>
+                    <div className="flex flex-row justify-between">
+                        <Button text="◀" onClick={() => {}} variant={1} />
+                        <Button text="SEL" onClick={() => {}} variant={1} />
+                        <Button text="▶" onClick={() => {}} variant={1} />
+                    </div>
+                    <div className="flex flex-row justify-between">
+                        <Button
+                            text="SPC"
+                            extraClass="text-[#1A1A1A] font-bold"
+                            onClick={() => {}}
+                            variant={1}
+                        />
+                        <Button text="▼" onClick={() => {}} variant={1} />
+                        <Button
+                            text="BRK"
+                            extraClass="text-[#1A1A1A] font-bold"
+                            onClick={() => {}}
+                            variant={1}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

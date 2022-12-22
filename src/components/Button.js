@@ -18,7 +18,7 @@ function Button({ text, onClick, variant, extraClass }) {
 
     return (
         <button
-            className={`relative flex flex-col items-center justify-center col-span-${variant} ${extraClass}`}
+            className={`relative flex flex-col items-center justify-center ${extraClass}`}
             onClick={handleClick}
         >
             {variant === 1 &&
