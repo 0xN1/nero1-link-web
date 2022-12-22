@@ -7,12 +7,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "connectkit": "^1.1.1",
-    "ethers": "^5.7.2",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "wagmi": "^0.9.2"
+    "react-draggable": "^4.4.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
