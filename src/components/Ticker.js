@@ -5,12 +5,12 @@ function Ticker({ ticker }) {
         <Draggable
             grid={[10, 10]}
             handle=".handle"
-            bounds={{
-                top: -50,
-                left: -50,
-                right: 50,
-                bottom: 50,
-            }}
+            // bounds={{
+            //     top: -50,
+            //     left: -50,
+            //     right: 50,
+            //     bottom: 50,
+            // }}
         >
             <div className="relative mb-4  flex flex-col items-center">
                 <svg

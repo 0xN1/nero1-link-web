@@ -389,7 +389,7 @@ const Home = () => {
                 </div>
                 <Ticker ticker={ticker} />
                 <Terminal loadNumber={loadNumber} termText={termText} />
-                <div className="flex scale-90 flex-col">
+                <div className="flex scale-95 flex-col">
                     <div className="flex flex-row justify-between">
                         <Button
                             text="ESC"

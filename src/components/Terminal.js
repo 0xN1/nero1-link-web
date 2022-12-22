@@ -6,12 +6,12 @@ function Terminal({ loadNumber, termText }) {
         <Draggable
             grid={[10, 10]}
             handle=".handle"
-            bounds={{
-                top: -100,
-                left: -100,
-                right: 100,
-                bottom: 100,
-            }}
+            // bounds={{
+            //     top: -100,
+            //     left: -100,
+            //     right: 100,
+            //     bottom: 100,
+            // }}
         >
             <div className="relative mb-4  flex flex-col items-center">
                 <svg
