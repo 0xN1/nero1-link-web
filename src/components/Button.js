@@ -12,7 +12,7 @@ function Button({ text, onClick, variant, extraClass }) {
         if (isClicked) {
             setTimeout(() => {
                 setIsClicked(false)
-            }, 200)
+            }, 10)
         }
     }, [isClicked])
 

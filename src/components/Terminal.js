@@ -352,10 +352,10 @@ function Terminal({
                     </defs>
                 </svg>
                 <div className="relative -mt-[300px] flex flex-col items-center gap-4">
-                    <span className="invisible scale-0 font-sans sm:visible sm:scale-50">
+                    <span className="hidden scale-0 font-sans sm:block sm:scale-50">
                         <TermLoader number={loadNumber} />
                     </span>
-                    <span className="visible absolute top-1 scale-75 font-sans sm:invisible">
+                    <span className="block scale-75 font-sans sm:hidden">
                         ▒▒▒▒▒▒▒▒▒▒
                     </span>
                     <span className="mt-5 h-[150px] w-[500px] overflow-hidden break-words px-10 font-plex text-xl">
