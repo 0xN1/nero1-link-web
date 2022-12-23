@@ -4,7 +4,7 @@ import TermLoader from '@/components/TermLoader'
 function Terminal({ loadNumber, termText, draggable }) {
     return (
         <Draggable grid={[10, 10]} handle=".handle" disabled={!draggable}>
-            <div className="relative mb-4 flex h-[377] w-[596] flex-col items-center">
+            <div className="relative mb-24 flex h-[377] w-[596] flex-col items-center sm:mb-4">
                 <svg
                     className="handle"
                     width="611"
