@@ -1,19 +1,10 @@
 import Draggable from 'react-draggable'
 import TermLoader from '@/components/TermLoader'
 
-function Terminal({ loadNumber, termText }) {
+function Terminal({ loadNumber, termText, draggable }) {
     return (
-        <Draggable
-            grid={[10, 10]}
-            handle=".handle"
-            // bounds={{
-            //     top: -100,
-            //     left: -100,
-            //     right: 100,
-            //     bottom: 100,
-            // }}
-        >
-            <div className="relative mb-4  flex flex-col items-center">
+        <Draggable grid={[10, 10]} handle=".handle" disabled={!draggable}>
+            <div className="relative mb-4 flex h-[377] w-[596] flex-col items-center">
                 <svg
                     className="handle"
                     width="611"
@@ -343,7 +334,7 @@ function Terminal({ loadNumber, termText }) {
                     </defs>
                 </svg>
                 <div className="relative -mt-[300px] flex flex-col items-center gap-4">
-                    <span className=" font-sans">
+                    <span className=" scale-50 font-sans">
                         <TermLoader number={loadNumber} />
                     </span>
                     <span className="mt-5 h-[150px] w-[500px] overflow-hidden px-10 font-plex text-xl">

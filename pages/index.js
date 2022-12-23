@@ -60,7 +60,7 @@ const Home = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             changeTicker()
-        }, 5000)
+        }, 10000)
         return () => clearInterval(interval)
     }, [ticker])
 
@@ -389,8 +389,12 @@ const Home = () => {
                         </svg>
                     </div>
                 </Draggable>
-                <Ticker ticker={ticker} />
-                <Terminal loadNumber={loadNumber} termText={termText} />
+                <Ticker ticker={ticker} draggable={true} />
+                <Terminal
+                    loadNumber={loadNumber}
+                    termText={termText}
+                    draggable={false}
+                />
                 <Draggable>
                     <div className="flex flex-col">
                         <div className="flex scale-90 flex-row justify-between">

@@ -1,17 +1,8 @@
 import Draggable from 'react-draggable'
 
-function Ticker({ ticker }) {
+function Ticker({ ticker, draggable }) {
     return (
-        <Draggable
-            grid={[10, 10]}
-            handle=".handle"
-            // bounds={{
-            //     top: -50,
-            //     left: -50,
-            //     right: 50,
-            //     bottom: 50,
-            // }}
-        >
+        <Draggable grid={[10, 10]} handle=".handle" disabled={!draggable}>
             <div className="relative mb-4  flex flex-col items-center">
                 <svg
                     className="handle"
