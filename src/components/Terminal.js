@@ -1,7 +1,25 @@
 import Draggable from 'react-draggable'
 import TermLoader from '@/components/TermLoader'
 
-function Terminal({ loadNumber, termText, draggable }) {
+function Terminal({
+    loadNumber,
+    termText,
+    draggable,
+    typeText,
+    num = 0,
+    numTotal = 0,
+}) {
+    const renderTypeText = (content) => {
+        switch (content) {
+            case 'INFO':
+                return '▥'
+            case 'NFT':
+                return '▣'
+            case 'LINK':
+                return '◩'
+        }
+    }
+
     return (
         <Draggable grid={[10, 10]} handle=".handle" disabled={!draggable}>
             <div className="relative mb-24 flex h-[377] w-[596] flex-col items-center sm:mb-4">
@@ -337,9 +355,13 @@ function Terminal({ loadNumber, termText, draggable }) {
                     <span className=" scale-50 font-sans">
                         <TermLoader number={loadNumber} />
                     </span>
-                    <span className="mt-5 h-[150px] w-[500px] overflow-hidden px-10 font-plex text-xl">
+                    <span className="mt-5 h-[150px] w-[500px] overflow-hidden break-words px-10 font-plex text-xl">
                         {termText}
                     </span>
+                    <span className="absolute top-1 left-10">
+                        {renderTypeText(typeText)}
+                    </span>
+                    <span className="absolute top-1 right-10">{`${num}/${numTotal}`}</span>
                 </div>
             </div>
         </Draggable>

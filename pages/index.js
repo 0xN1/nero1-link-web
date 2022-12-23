@@ -1,34 +1,54 @@
-import { APP_NAME } from '@/lib/constants'
 import Head from 'next/head'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
 
 import Ticker from '@/components/Ticker'
 import Terminal from '@/components/Terminal'
 import Button from '@/components/Button'
 
-const randomText = [
-    // 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti',
-    // 'Random text is random. They are not real words. They are just random letters',
-    // 'Presentation is everything, and this is not a presentation. This is a website',
-    'Hey, Nero One here. Currently exploring : 3D, VJ, Mograph, XR, Creative Coding, Web3, DAO',
+const data = [
+    {
+        content: [
+            'Hey, Nero One here! based in Malaysia',
+            'I am currently exploring 3D, VJ, Mograph, XR, Creative Coding, Web3, DAO',
+        ],
+        type: 'INFO',
+        isLink: false,
+    },
+    {
+        content: [
+            'instagram.com/neroone_',
+            'behance.net/fukarinka',
+            'github.com/0xN1',
+            'ko-fi.com/neroone',
+            'facebook.com/fukarinka',
+            'twitter.com/0xNeroOne',
+            'guild.xyz/n1-lab',
+        ],
+        type: 'LINK',
+        isLink: true,
+    },
+    {
+        content: [
+            'opensea.io/collection/dinonouns',
+            'opensea.io/collection/tujo',
+        ],
+        type: 'NFT',
+        isLink: true,
+    },
 ]
 
-const randomTicker = [
-    'work in progress',
-    'hotel california',
-    'the end',
-    'the beginning',
-    'the middle',
-    'breaking news',
-]
+const welcomeMsg =
+    'LOADING >>>>>>>>>>>>>>>>>>>>>>>>>> WELCOME TO NERO1.LINK >>>>>>>>>>>> Press arrow to navigate'
+
+const welcomeTkr = 'WELCOME TO NERO1.LINK'
 
 const Home = () => {
-    const [ticker, setTicker] = useState('work in progress')
-    const [termText, setTermText] = useState(
-        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti',
-    )
+    const [ticker, setTicker] = useState(welcomeTkr)
+    const [termText, setTermText] = useState(welcomeMsg)
     const [loadNumber, setLoadNumber] = useState(0)
+    const [dataIndex, setDataIndex] = useState(0)
+    const [contentIndex, setContentIndex] = useState(0)
 
     // changing number from 0-100 and loop
     const changeNumber = () => {
@@ -38,31 +58,6 @@ const Home = () => {
             setLoadNumber(0)
         }
     }
-
-    // changing text from randomText array and loop
-    const changeText = () => {
-        const random = Math.floor(Math.random() * randomText.length)
-        setTermText(randomText[random])
-    }
-
-    const changeTicker = () => {
-        const random = Math.floor(Math.random() * randomTicker.length)
-        setTicker(randomTicker[random])
-    }
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            changeText()
-        }, 5000)
-        return () => clearInterval(interval)
-    }, [termText])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            changeTicker()
-        }, 10000)
-        return () => clearInterval(interval)
-    }, [ticker])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -390,12 +385,18 @@ const Home = () => {
                     </div>
                 </Draggable>
                 <Ticker ticker={ticker} draggable={true} />
+                {/* <div className="flex flex-col text-center">
+                    {data[dataIndex].type}
+                </div> */}
                 <Terminal
                     loadNumber={loadNumber}
                     termText={termText}
                     draggable={false}
+                    typeText={data[dataIndex].type}
+                    num={contentIndex + 1}
+                    numTotal={data[dataIndex].content.length}
                 />
-                <Draggable>
+                <Draggable disabled={true}>
                     <div className="flex flex-col">
                         <div className="flex scale-90 flex-row justify-between">
                             <Button
@@ -403,15 +404,26 @@ const Home = () => {
                                 extraClass="text-[#474747] font-bold"
                                 onClick={() => {
                                     setLoadNumber(0)
-                                    setTicker('ESC')
-                                    setTermText('')
+                                    setContentIndex(0)
+                                    setDataIndex(0)
+                                    setTicker(welcomeTkr)
+                                    setTermText(welcomeMsg)
                                 }}
                                 variant={1}
                             />
                             <Button
                                 text="PROCEED"
-                                extraClass="text-[#FF4D00]"
-                                onClick={() => {}}
+                                extraClass={
+                                    data[dataIndex].isLink == true
+                                        ? 'text-[#FF4D00]'
+                                        : 'text-[#1A1A1A] font-bold'
+                                }
+                                onClick={() => {
+                                    data[dataIndex].isLink == true &&
+                                        window.open(
+                                            `https://${data[dataIndex].content[contentIndex]}`,
+                                        )
+                                }}
                                 variant={2}
                             />
                         </div>
@@ -419,34 +431,107 @@ const Home = () => {
                             <Button
                                 text="NUL"
                                 extraClass="text-[#1A1A1A] font-bold"
-                                onClick={() => {}}
+                                onClick={() => {
+                                    setTermText('NULL--NULL--NULL')
+                                    setTicker('NULL--NULL--NULL')
+                                }}
                                 variant={1}
                             />
-                            <Button text="▲" onClick={() => {}} variant={1} />
+                            <Button
+                                text="▲"
+                                onClick={() => {
+                                    if (dataIndex > 0) {
+                                        setDataIndex(dataIndex - 1)
+                                        setContentIndex(0)
+                                        setTermText(
+                                            data[dataIndex - 1].content[0],
+                                        )
+                                    }
+                                }}
+                                variant={1}
+                            />
                             <Button
                                 text="SPC"
                                 extraClass="text-[#1A1A1A] font-bold"
-                                onClick={() => {}}
+                                onClick={() => {
+                                    setTermText('SPAAAAAAAAAAAAAAAAAAACE')
+                                    setTicker('SPAAAAAAAAAAAAAAAAAAACE')
+                                }}
                                 variant={1}
                             />
                         </div>
                         <div className="flex scale-90 flex-row justify-between">
-                            <Button text="◀" onClick={() => {}} variant={1} />
-                            <Button text="SEL" onClick={() => {}} variant={1} />
-                            <Button text="▶" onClick={() => {}} variant={1} />
+                            <Button
+                                text="◀"
+                                onClick={() => {
+                                    if (contentIndex > 0) {
+                                        setContentIndex(contentIndex - 1)
+                                        setTermText(
+                                            data[dataIndex].content[
+                                                contentIndex - 1
+                                            ],
+                                        )
+                                    }
+                                }}
+                                variant={1}
+                            />
+                            <Button
+                                text="SEL"
+                                onClick={() => {
+                                    const tk =
+                                        data[dataIndex].content[contentIndex]
+                                    setTicker(tk)
+                                }}
+                                variant={1}
+                            />
+                            <Button
+                                text="▶"
+                                onClick={() => {
+                                    if (
+                                        contentIndex <
+                                        data[dataIndex].content.length - 1
+                                    ) {
+                                        setContentIndex(contentIndex + 1)
+                                        setTermText(
+                                            data[dataIndex].content[
+                                                contentIndex + 1
+                                            ],
+                                        )
+                                    }
+                                }}
+                                variant={1}
+                            />
                         </div>
                         <div className="flex scale-90 flex-row justify-between">
                             <Button
-                                text="SPC"
+                                text="SPR"
                                 extraClass="text-[#1A1A1A] font-bold"
-                                onClick={() => {}}
+                                onClick={() => {
+                                    setTermText('SPRINT. NOWWW!')
+                                    setTicker('SPRINT. NOWWW!')
+                                }}
                                 variant={1}
                             />
-                            <Button text="▼" onClick={() => {}} variant={1} />
+                            <Button
+                                text="▼"
+                                onClick={() => {
+                                    if (dataIndex < data.length - 1) {
+                                        setDataIndex(dataIndex + 1)
+                                        setContentIndex(0)
+                                        setTermText(
+                                            data[dataIndex + 1].content[0],
+                                        )
+                                    }
+                                }}
+                                variant={1}
+                            />
                             <Button
                                 text="BRK"
                                 extraClass="text-[#1A1A1A] font-bold"
-                                onClick={() => {}}
+                                onClick={() => {
+                                    setTermText('BREAK!')
+                                    setTicker('BREAK!')
+                                }}
                                 variant={1}
                             />
                         </div>
