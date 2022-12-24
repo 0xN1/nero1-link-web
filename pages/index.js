@@ -384,10 +384,13 @@ const Home = () => {
                         </svg>
                     </div>
                 </Draggable>
-                <Ticker ticker={ticker} draggable={true} />
+
                 {/* <div className="flex flex-col text-center">
                     {data[dataIndex].type}
                 </div> */}
+                <div className="block 2xl:hidden">
+                    <Ticker ticker={ticker} draggable={true} />
+                </div>
                 <Terminal
                     loadNumber={loadNumber}
                     termText={termText}
@@ -396,6 +399,9 @@ const Home = () => {
                     num={contentIndex + 1}
                     numTotal={data[dataIndex].content.length}
                 />
+                <div className="hidden 2xl:block">
+                    <Ticker ticker={ticker} draggable={true} />
+                </div>
                 <Draggable disabled={true}>
                     <div className="flex flex-col">
                         <div className="flex scale-90 flex-row justify-between">
