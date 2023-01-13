@@ -24,6 +24,7 @@ const data = [
             'facebook.com/fukarinka',
             'twitter.com/0xNeroOne',
             'guild.xyz/n1-lab',
+            'n1-lab.link/dc',
         ],
         type: 'LINK',
         isLink: true,
@@ -32,6 +33,10 @@ const data = [
         content: [
             'opensea.io/collection/dinonouns',
             'opensea.io/collection/tujo',
+            'opensea.io/collection/x-gen-by-n1',
+            'opensea.io/collection/n1-lab-exp',
+            'opensea.io/collection/n1-lab-phygital-s1',
+            'opensea.io/collection/moving-four-words',
         ],
         type: 'NFT',
         isLink: true,
