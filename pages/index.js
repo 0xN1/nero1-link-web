@@ -31,6 +31,10 @@ const data = [
     },
     {
         content: [
+            'opensea.io/collection/fl00rs',
+            'n1-lab.link/fl00rs-x',
+            'n1-lab.link/the-lab',
+            'n1-lab.link/comlink',
             'opensea.io/collection/dinonouns',
             'opensea.io/collection/tujo',
             'opensea.io/collection/x-gen-by-n1',
